@@ -2255,6 +2255,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/streamifier@npm:^0":
+  version: 0.1.2
+  resolution: "@types/streamifier@npm:0.1.2"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10c0/475f787ae2b992a22f3b794ad0920d2b43e0541d126020c1edb25ebd60b736122d1c4db6813aa8fa9ad5cfed49b700a1e6ee5154acabac2ebc2bed7b40c0d667
+  languageName: node
+  linkType: hard
+
 "@types/superagent@npm:*":
   version: 4.1.19
   resolution: "@types/superagent@npm:4.1.19"
@@ -3024,6 +3033,7 @@ __metadata:
     "@types/jest": "npm:^29.5.2"
     "@types/multer": "npm:^1.4.9"
     "@types/node": "npm:^20.3.1"
+    "@types/streamifier": "npm:^0"
     "@types/supertest": "npm:^2.0.12"
     "@types/uuid": "npm:^10.0.0"
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
@@ -3051,6 +3061,7 @@ __metadata:
     reflect-metadata: "npm:^0.1.13"
     rxjs: "npm:^7.8.1"
     source-map-support: "npm:^0.5.21"
+    streamifier: "npm:^0.1.1"
     supertest: "npm:^6.3.3"
     ts-jest: "npm:^29.1.0"
     ts-loader: "npm:^9.4.3"
@@ -7920,6 +7931,13 @@ __metadata:
   version: 2.0.1
   resolution: "statuses@npm:2.0.1"
   checksum: 10c0/34378b207a1620a24804ce8b5d230fea0c279f00b18a7209646d5d47e419d1cc23e7cbf33a25a1e51ac38973dc2ac2e1e9c647a8e481ef365f77668d72becfd0
+  languageName: node
+  linkType: hard
+
+"streamifier@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "streamifier@npm:0.1.1"
+  checksum: 10c0/132035d8519c65f3903047b06b003201d3eaef6eb164cf5ba86ee22c2203c3a0109198946dc579002e39f704b568bedc8ce61a729e0a8dd00249d0a9658353a4
   languageName: node
   linkType: hard
 

@@ -20,10 +20,8 @@ import { AuthGuard } from '../../guards/auth.guard'
 import { Roles } from '../../decorators/roles.decorator'
 import { UserRole } from '../../enums/role.enum'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from '../../common/config'
 import { fileFilter } from '../../common/fileFilter'
 import { CloudinaryService } from '../../common/uploadImage'
-import { deleteImage } from '../../common/deleteImage'
 @Controller('users')
 export class UserController {
   constructor(
@@ -47,7 +45,6 @@ export class UserController {
   @Roles(UserRole.USER, UserRole.ADMIN, UserRole.EMPLOYEE)
   @UseInterceptors(
     FileInterceptor('user_image', {
-      storage: storageConfig('user_image'),
       fileFilter,
     }),
   )
@@ -57,19 +54,13 @@ export class UserController {
     }
 
     try {
-      const result_image = file ? await this.cloudinaryService.uploadImage(file.path, 'avatar') : null
-      file && deleteImage(file.path)
+      const result_image = file ? await this.cloudinaryService.uploadImage(file.path) : null
 
       return this.userService.update(req.user_data.id, updateUserDTO, file ? result_image?.secure_url : null)
     } catch (error) {
       console.log(error)
-      file && deleteImage(file.path)
       throw new HttpException('Upload ảnh thất bại !', HttpStatus.BAD_REQUEST)
-    } finally {
-      if (file) {
-        deleteImage(file.path)
-      }
-    }
+    } 
   }
 
   @Put('updateUserForAdmin')

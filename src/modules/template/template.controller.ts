@@ -21,9 +21,7 @@ import { fileFilter } from '../../common/fileFilter'
 import { TemplateService } from './template.service'
 import { CloudinaryService } from '../../common/uploadImage'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from '../../common/config'
 import { CreateTemplateDTO, FilterTemplateDTO } from '../../dtos/template.dto'
-import { deleteImage } from '../../common/deleteImage'
 
 @Controller('templates')
 export class TemplateController {
@@ -36,7 +34,6 @@ export class TemplateController {
   @Roles(UserRole.ADMIN, UserRole.EMPLOYEE)
   @UseInterceptors(
     FileInterceptor('template_image', {
-      storage: storageConfig('template_image'),
       fileFilter,
     }),
   )
@@ -50,13 +47,11 @@ export class TemplateController {
     }
 
     try {
-      const result_image = file ? await this.cloudinaryService.uploadImage(file.path, 'template') : null
-      file && deleteImage(file.path)
+      const result_image = file ? await this.cloudinaryService.uploadImage(file.path) : null
 
       return this.templateService.create(createTemplateDTO, req.user_data.id, file ? result_image?.secure_url : null)
     } catch (error) {
       console.log(error)
-      file && deleteImage(file.path)
       throw new HttpException('Upload ảnh thất bại !', HttpStatus.BAD_REQUEST)
     }
   }

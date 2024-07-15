@@ -16,12 +16,10 @@ import { UserRole } from '../../enums/role.enum'
 import { AuthGuard } from '../../guards/auth.guard'
 import { Roles } from '../../decorators/roles.decorator'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from '../../common/config'
 import { fileFilter } from '../../common/fileFilter'
 import { OptionService } from './option.service'
 import { CreateOptionDTO, UpdateOptionDTO } from '../../dtos/option.dto'
 import { CloudinaryService } from '../../common/uploadImage'
-import { deleteImage } from '../../common/deleteImage'
 
 @Controller('options')
 export class OptionController {
@@ -34,7 +32,6 @@ export class OptionController {
   @Roles(UserRole.ADMIN, UserRole.EMPLOYEE)
   @UseInterceptors(
     FileInterceptor('option_image', {
-      storage: storageConfig('option_image'),
       fileFilter,
     }),
   )
@@ -43,13 +40,11 @@ export class OptionController {
       throw new BadRequestException(req.fileValidationError)
     }
     try {
-      const result_image = await this.cloudinaryService.uploadImage(file.path, 'option')
-      deleteImage(file.path)
+      const result_image = await this.cloudinaryService.uploadImage(file)
 
       return this.optionService.create(createOptionDTO, req.user_data.id, file ? result_image.secure_url : null)
     } catch (error) {
       console.log(error)
-      deleteImage(file.path)
       throw new HttpException('Upload ảnh thất bại !', HttpStatus.BAD_REQUEST)
     }
   }
@@ -59,7 +54,6 @@ export class OptionController {
   @Roles(UserRole.ADMIN, UserRole.EMPLOYEE, UserRole.USER)
   @UseInterceptors(
     FileInterceptor('option_image', {
-      storage: storageConfig('option_image'),
       fileFilter,
     }),
   )

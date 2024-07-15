@@ -1,13 +1,6 @@
 import { Injectable, HttpException, HttpStatus, ConflictException, InternalServerErrorException } from '@nestjs/common'
 
-import {
-  ChangePasswordDTO,
-  ForgotPasswordDTO,
-  LoginDTO,
-  RegisterDTO,
-  SendOtpDTO,
-  VerifyOtpDTO,
-} from '../dtos/auth.dto'
+import { ChangePasswordDTO, ForgotPasswordDTO, LoginDTO, RegisterDTO, SendOtpDTO, VerifyOtpDTO } from '../dtos/auth.dto'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
 import { ConfigService } from '@nestjs/config'
@@ -160,6 +153,8 @@ export class AuthService {
 
     if (user.device_token !== loginDTO.device_token) {
       const updateResult = await user.updateOne({ device_token: loginDTO.device_token })
+      console.log('heheheheheheheheheheh')
+
       if (updateResult.modifiedCount > 0) {
         const payload = {
           id: user.id,
@@ -177,7 +172,21 @@ export class AuthService {
       } else {
         throw new HttpException('Đăng nhập thất bại !', HttpStatus.NOT_IMPLEMENTED)
       }
-    }    
+    } else {
+      const payload = {
+        id: user.id,
+        updatedToken: user.updated_token,
+        email: user.email,
+        role: user.role,
+      }
+      const token = await this.generateToken(payload)
+      return {
+        user: plainToInstance(UserDTO, user, {
+          excludeExtraneousValues: true,
+        }),
+        token: token,
+      }
+    }
   }
 
   async loginAdmin(loginDTO: LoginDTO) {

@@ -17,19 +17,19 @@ export const uploadToFirebase = async (file: Express.Multer.File) => {
   const app = initializeApp(firebaseConfig);
   const storage = getStorage(app);
 
-  if (!file || !file.path) {
+  if (!file) {
     throw new Error('Không tìm thấy file !');
   }
 
   try {
-    const fileBuffer = fs.readFileSync(file.path);
-    if (fileBuffer.length === 0) {
-      throw new Error('Không tìm thấy file !');
-    }
+    // const fileBuffer = fs.readFileSync(file.path);
+    // if (fileBuffer.length === 0) {
+    //   throw new Error('Không tìm thấy file !');
+    // }
 
-    const storageRef = ref(storage,"upload/" + file.filename);
+    const storageRef = ref(storage,"upload/" + Date.now().toString() + file.originalname);
 
-    await uploadBytes(storageRef, fileBuffer);
+    await uploadBytes(storageRef, file.buffer);
 
     const downloadURL = await getDownloadURL(storageRef);
 

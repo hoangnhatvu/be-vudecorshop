@@ -15,7 +15,6 @@ import { Category } from '../../types/category';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from '../../types/user';
-import { deleteImage } from '../../common/deleteImage';
 
 export interface PaginatedCategory {
   data: CategoryDTO[];
@@ -105,15 +104,11 @@ export class CategoryService {
       const updateResult = await category.updateOne(updateCategoryData);
 
       if (updateResult.modifiedCount > 0) {
-        if (newImage) {
-          deleteImage(oldImage);
-        }
         return { message: 'Update successfully' };
       } else {
         throw new HttpException('Update fail', HttpStatus.NOT_IMPLEMENTED);
       }
     } catch (err) {
-      deleteImage(newImage);
       if (err instanceof HttpException) {
         throw err;
       } else {

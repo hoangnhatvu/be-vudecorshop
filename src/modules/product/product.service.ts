@@ -5,7 +5,6 @@ import { Category } from '../../types/category'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { User } from '../../types/user'
-import { deleteImage } from '../../common/deleteImage'
 import { CreateProductDTO, FilterProductDTO, ProductDTO, UpdateProductDTO } from '../../dtos/product.dto'
 import { Product } from '../../types/product'
 import { Option } from '../../types/option'
@@ -119,16 +118,12 @@ export class ProductService {
         const updateResult = await product.updateOne(updateProductData)
 
         if (updateResult.modifiedCount > 0) {
-          if (newImage) {
-            deleteImage(oldImage)
-          }
           return { message: 'Cập nhật thành công !' }
         } else {
           throw new HttpException('Cập nhật thất bại !', HttpStatus.NOT_IMPLEMENTED)
         }
       }
     } catch (err) {
-      deleteImage(newImage)
       if (err instanceof HttpException) {
         throw err
       } else {
@@ -246,7 +241,6 @@ export class ProductService {
           updated_token: generateUpdateToken(),
         })
         if (updateResult.modifiedCount > 0) {
-          deleteImage(oldImage)
           return { message: 'Delete successfully' }
         } else {
           throw new HttpException('Delete fail', HttpStatus.NOT_IMPLEMENTED)

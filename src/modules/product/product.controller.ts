@@ -19,12 +19,10 @@ import { UserRole } from '../../enums/role.enum'
 import { AuthGuard } from '../../guards/auth.guard'
 import { Roles } from '../../decorators/roles.decorator'
 import { FileFieldsInterceptor, FileInterceptor, FilesInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from '../../common/config'
 import { fileFilter } from '../../common/fileFilter'
 import { ProductService } from './product.service'
 import { CreateProductDTO, FilterProductDTO, UpdateProductDTO } from '../../dtos/product.dto'
 import { CloudinaryService } from '../../common/uploadImage'
-import { deleteImage } from '../../common/deleteImage'
 import { uploadToFirebase } from '../../common/uploadObject3d'
 @Controller('products')
 export class ProductController {
@@ -42,7 +40,6 @@ export class ProductController {
         { name: 'product_3d', maxCount: 1 },
       ],
       {
-        storage: storageConfig('product_assets'),
         fileFilter,
       },
     ),
@@ -56,10 +53,9 @@ export class ProductController {
       throw new BadRequestException(req.fileValidationError)
     }
     try {
-      const result_image = await this.cloudinaryService.uploadImage(files.product_image[0].path, 'product')
+      console.log(files.product_image[0], files.product_3d[0] )
       const result_3d = await uploadToFirebase(files.product_3d[0])
-      deleteImage(files.product_image[0].path)
-      deleteImage(files.product_3d[0].path)
+      const result_image = await this.cloudinaryService.uploadImage(files.product_image[0])
       return this.productService.create(
         createProductDTO,
         req.user_data.id,
@@ -68,8 +64,6 @@ export class ProductController {
       )
     } catch (error) {
       console.log(error)
-      deleteImage(files.product_image[0].path)
-      deleteImage(files.product_3d[0].path)
       throw new HttpException('Upload ảnh thất bại !', HttpStatus.BAD_REQUEST)
     }
   }
@@ -79,7 +73,6 @@ export class ProductController {
   @Roles(UserRole.ADMIN, UserRole.EMPLOYEE)
   @UseInterceptors(
     FileInterceptor('product_image', {
-      storage: storageConfig('product_image'),
       fileFilter,
     }),
   )

@@ -21,10 +21,8 @@ import { AuthGuard } from '../../guards/auth.guard'
 import { Roles } from '../../decorators/roles.decorator'
 import { CreateCategoryDTO, UpdateCategoryDTO } from '../../dtos/category.dto'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from '../../common/config'
 import { fileFilter } from '../../common/fileFilter'
 import { CloudinaryService } from '../../common/uploadImage'
-import { deleteImage } from '../../common/deleteImage'
 
 @Controller('categories')
 export class CategoryController {
@@ -37,7 +35,6 @@ export class CategoryController {
   @Roles(UserRole.ADMIN)
   @UseInterceptors(
     FileInterceptor('category_image', {
-      storage: storageConfig('category_image'),
       fileFilter,
     }),
   )
@@ -50,19 +47,13 @@ export class CategoryController {
       throw new BadRequestException(req.fileValidationError)
     }
     try {
-      const result_image = await this.cloudinaryService.uploadImage(file.path, 'category')
-      deleteImage(file.path)
-      return this.categoryService.create(
-        categoryCreateDTO,
-        req.user_data.id,
-        file ? result_image.secure_url : null,
-      )
+      const result_image = await this.cloudinaryService.uploadImage(file)
+      console.log(result_image)
+      return this.categoryService.create(categoryCreateDTO, req.user_data.id, file ? result_image.secure_url : null)
     } catch (error) {
       console.log(error)
-      deleteImage(file.path)
       throw new HttpException('Upload ảnh thất bại !', HttpStatus.BAD_REQUEST)
     }
- 
   }
 
   @Put('update')
@@ -70,7 +61,6 @@ export class CategoryController {
   @Roles(UserRole.ADMIN)
   @UseInterceptors(
     FileInterceptor('category_image', {
-      storage: storageConfig('category_image'),
       fileFilter,
     }),
   )

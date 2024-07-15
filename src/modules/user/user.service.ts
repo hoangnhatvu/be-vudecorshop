@@ -6,7 +6,6 @@ import { plainToInstance } from 'class-transformer'
 import { CreateUserDto, UpdateUserDTO, UpdateUserForAdminDTO, UserDTO, UserForAdminDTO } from '../../dtos/user.dto'
 import { User } from '../../types/user'
 import { hashPassword } from '../../common/hashPassword'
-import { deleteImage } from '../../common/deleteImage'
 import { UserRole } from '../../enums/role.enum'
 
 export interface PaginatedUser {

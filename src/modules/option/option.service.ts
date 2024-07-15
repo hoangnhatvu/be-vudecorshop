@@ -4,7 +4,6 @@ import { plainToInstance } from 'class-transformer'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
 import { User } from '../../types/user'
-import { deleteImage } from '../../common/deleteImage'
 import { Option } from '../../types/option'
 import { CreateOptionDTO, OptionDTO, UpdateOptionDTO } from '../../dtos/option.dto'
 import { Product } from '../../types/product'
@@ -86,15 +85,11 @@ export class OptionService {
       await product.updateOne({ updated_token: generateUpdateToken(), updated_by: user, updated_date: Date.now() })
 
       if (updateResult.modifiedCount > 0) {
-        if (newImage) {
-          deleteImage(oldImage)
-        }
         return { message: 'Cập nhật thành công !' }
       } else {
         throw new HttpException('Cập nhật thất bại !', HttpStatus.NOT_IMPLEMENTED)
       }
     } catch (err) {
-      deleteImage(newImage)
       if (err instanceof HttpException) {
         throw err
       } else {
