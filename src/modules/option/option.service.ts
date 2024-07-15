@@ -1,13 +1,13 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
-import { generateUpdateToken } from 'src/common/generate-update-token'
+import { generateUpdateToken } from '../../common/generate-update-token'
 import { plainToInstance } from 'class-transformer'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { User } from 'src/types/user'
-import { deleteImage } from 'src/common/deleteImage'
-import { Option } from 'src/types/option'
-import { CreateOptionDTO, OptionDTO, UpdateOptionDTO } from 'src/dtos/option.dto'
-import { Product } from 'src/types/product'
+import { User } from '../../types/user'
+import { deleteImage } from '../../common/deleteImage'
+import { Option } from '../../types/option'
+import { CreateOptionDTO, OptionDTO, UpdateOptionDTO } from '../../dtos/option.dto'
+import { Product } from '../../types/product'
 
 @Injectable()
 export class OptionService {

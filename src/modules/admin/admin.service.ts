@@ -1,10 +1,10 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { User } from 'src/types/user'
-import { Product } from 'src/types/product'
-import { Order } from 'src/types/order'
-import { OrderStatus } from 'src/enums/order.enum'
+import { User } from '../../types/user'
+import { Product } from '../../types/product'
+import { Order } from '../../types/order'
+import { OrderStatus } from '../../enums/order.enum'
 
 @Injectable()
 export class AdminService {

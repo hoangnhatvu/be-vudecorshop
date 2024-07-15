@@ -8,7 +8,7 @@ import {
 } from 'class-validator'
 import { Expose, Transform, Type } from 'class-transformer'
 import { CategoryInfoDTO } from './category.dto'
-import { BooleanPipe } from 'src/pipes/boolean.pipe'
+import { BooleanPipe } from '../pipes/boolean.pipe'
 import { MetaDataDTO } from './meta-data.dto'
 import { OptionDTO } from './option.dto'
 

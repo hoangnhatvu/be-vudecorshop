@@ -4,18 +4,18 @@ import {
   Injectable,
   Response,
 } from '@nestjs/common';
-import { generateUpdateToken } from 'src/common/generate-update-token';
+import { generateUpdateToken } from '../../common/generate-update-token';
 import { plainToInstance } from 'class-transformer';
 import {
   CategoryDTO,
   CreateCategoryDTO,
   UpdateCategoryDTO,
-} from 'src/dtos/category.dto';
-import { Category } from 'src/types/category';
+} from '../../dtos/category.dto';
+import { Category } from '../../types/category';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { User } from 'src/types/user';
-import { deleteImage } from 'src/common/deleteImage';
+import { User } from '../../types/user';
+import { deleteImage } from '../../common/deleteImage';
 
 export interface PaginatedCategory {
   data: CategoryDTO[];

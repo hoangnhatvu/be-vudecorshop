@@ -3,11 +3,9 @@ import { Expose, Transform, Type } from 'class-transformer';
 import { UserInfoDTO } from './user.dto';
 import { MetaDataDTO } from './meta-data.dto';
 import { ProductInfoDTO } from './product.dto';
-import { BooleanPipe } from 'src/pipes/boolean.pipe';
-import { NoInferType } from '@nestjs/config';
 import { OptionDTO } from './option.dto';
-import { PaymentMethod } from 'src/enums/payment.enum';
-import { OrderStatus } from 'src/enums/order.enum';
+import { PaymentMethod } from '../enums/payment.enum';
+import { OrderStatus } from '../enums/order.enum';
 
 export class OrderItemDTO {
   @Expose()

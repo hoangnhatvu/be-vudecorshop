@@ -1,13 +1,13 @@
 import { Injectable, ConflictException, InternalServerErrorException, HttpException, HttpStatus } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { generateUpdateToken } from 'src/common/generate-update-token'
+import { generateUpdateToken } from '../../common/generate-update-token'
 import { plainToInstance } from 'class-transformer'
-import { CreateUserDto, UpdateUserDTO, UpdateUserForAdminDTO, UserDTO, UserForAdminDTO } from 'src/dtos/user.dto'
-import { User } from 'src/types/user'
-import { hashPassword } from 'src/common/hashPassword'
-import { deleteImage } from 'src/common/deleteImage'
-import { UserRole } from 'src/enums/role.enum'
+import { CreateUserDto, UpdateUserDTO, UpdateUserForAdminDTO, UserDTO, UserForAdminDTO } from '../../dtos/user.dto'
+import { User } from '../../types/user'
+import { hashPassword } from '../../common/hashPassword'
+import { deleteImage } from '../../common/deleteImage'
+import { UserRole } from '../../enums/role.enum'
 
 export interface PaginatedUser {
   data: UserForAdminDTO[]

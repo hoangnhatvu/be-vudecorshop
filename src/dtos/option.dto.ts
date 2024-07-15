@@ -1,6 +1,6 @@
 import { Expose, Transform, Type } from 'class-transformer'
 import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, Max, Min } from 'class-validator'
-import { BooleanPipe } from 'src/pipes/boolean.pipe'
+import { BooleanPipe } from '../pipes/boolean.pipe'
 
 export class OptionDTO {
   @Expose()

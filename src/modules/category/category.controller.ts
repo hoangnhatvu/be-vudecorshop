@@ -16,15 +16,15 @@ import {
   HttpStatus,
 } from '@nestjs/common'
 import { CategoryService, PaginatedCategory } from './category.service'
-import { UserRole } from 'src/enums/role.enum'
-import { AuthGuard } from 'src/guards/auth.guard'
-import { Roles } from 'src/decorators/roles.decorator'
-import { CreateCategoryDTO, UpdateCategoryDTO } from 'src/dtos/category.dto'
+import { UserRole } from '../../enums/role.enum'
+import { AuthGuard } from '../../guards/auth.guard'
+import { Roles } from '../../decorators/roles.decorator'
+import { CreateCategoryDTO, UpdateCategoryDTO } from '../../dtos/category.dto'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from 'src/common/config'
-import { fileFilter } from 'src/common/fileFilter'
-import { CloudinaryService } from 'src/common/uploadImage'
-import { deleteImage } from 'src/common/deleteImage'
+import { storageConfig } from '../../common/config'
+import { fileFilter } from '../../common/fileFilter'
+import { CloudinaryService } from '../../common/uploadImage'
+import { deleteImage } from '../../common/deleteImage'
 
 @Controller('categories')
 export class CategoryController {

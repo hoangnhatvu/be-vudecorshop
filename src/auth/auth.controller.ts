@@ -1,9 +1,9 @@
 import { Req, Body, Controller, HttpCode, Post, UseGuards, Get } from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { AuthGuard } from '../guards/auth.guard'
-import { ChangePasswordDTO, ForgotPasswordDTO, LoginDTO, RegisterDTO, SendOtpDTO, VerifyOtpDTO } from 'src/dtos/auth.dto'
-import { Roles } from 'src/decorators/roles.decorator'
-import { UserRole } from 'src/enums/role.enum'
+import { ChangePasswordDTO, ForgotPasswordDTO, LoginDTO, RegisterDTO, SendOtpDTO, VerifyOtpDTO } from '../dtos/auth.dto'
+import { Roles } from '../decorators/roles.decorator'
+import { UserRole } from '../enums/role.enum'
 
 @Controller('auth')
 export class AuthController {
@@ -47,7 +47,7 @@ export class AuthController {
   }
 
   @Post('getUserStatus')
-  getUserStatus(@Body() body: {id: string}) {
+  getUserStatus(@Body() body: { id: string }) {
     return this.authService.getStatusUser(body.id)
   }
 

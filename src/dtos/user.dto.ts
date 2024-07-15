@@ -1,8 +1,8 @@
 import { IsNotEmpty, Length, IsEmail, IsOptional, IsBoolean, IsArray, Matches, IsPhoneNumber, MaxLength, IsDateString, IsNumber, Min, IsEnum } from 'class-validator';
 import { Transform, Expose, Exclude, Type } from 'class-transformer';
-import { BooleanPipe } from 'src/pipes/boolean.pipe';
-import { Gender } from 'src/enums/gender.enum';
-import { UserRole } from 'src/enums/role.enum';
+import { BooleanPipe } from '../pipes/boolean.pipe';
+import { Gender } from '../enums/gender.enum';
+import { UserRole } from '../enums/role.enum';
 
 export class ShipInfoDTO {
   @Expose()

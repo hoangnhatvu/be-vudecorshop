@@ -1,14 +1,14 @@
 import { HttpException, HttpStatus, Injectable, Response } from '@nestjs/common'
-import { generateUpdateToken } from 'src/common/generate-update-token'
+import { generateUpdateToken } from '../../common/generate-update-token'
 import { plainToInstance } from 'class-transformer'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { User } from 'src/types/user'
-import { CreateReviewDTO, ReviewDTO, UpdateReviewDTO } from 'src/dtos/review.dto'
-import { Product } from 'src/types/product'
-import { Review } from 'src/types/review'
-import { Order } from 'src/types/order'
-import { OrderStatus } from 'src/enums/order.enum'
+import { User } from '../../types/user'
+import { CreateReviewDTO, ReviewDTO, UpdateReviewDTO } from '../../dtos/review.dto'
+import { Product } from '../../types/product'
+import { Review } from '../../types/review'
+import { Order } from '../../types/order'
+import { OrderStatus } from '../../enums/order.enum'
 
 export interface PaginatedReview {
   data: ReviewDTO[]

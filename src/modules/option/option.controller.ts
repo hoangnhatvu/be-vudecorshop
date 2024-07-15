@@ -12,16 +12,16 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common'
-import { UserRole } from 'src/enums/role.enum'
-import { AuthGuard } from 'src/guards/auth.guard'
-import { Roles } from 'src/decorators/roles.decorator'
+import { UserRole } from '../../enums/role.enum'
+import { AuthGuard } from '../../guards/auth.guard'
+import { Roles } from '../../decorators/roles.decorator'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from 'src/common/config'
-import { fileFilter } from 'src/common/fileFilter'
+import { storageConfig } from '../../common/config'
+import { fileFilter } from '../../common/fileFilter'
 import { OptionService } from './option.service'
-import { CreateOptionDTO, UpdateOptionDTO } from 'src/dtos/option.dto'
-import { CloudinaryService } from 'src/common/uploadImage'
-import { deleteImage } from 'src/common/deleteImage'
+import { CreateOptionDTO, UpdateOptionDTO } from '../../dtos/option.dto'
+import { CloudinaryService } from '../../common/uploadImage'
+import { deleteImage } from '../../common/deleteImage'
 
 @Controller('options')
 export class OptionController {

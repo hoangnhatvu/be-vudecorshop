@@ -7,21 +7,21 @@ import {
   RegisterDTO,
   SendOtpDTO,
   VerifyOtpDTO,
-} from 'src/dtos/auth.dto'
+} from '../dtos/auth.dto'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
 import { ConfigService } from '@nestjs/config'
 import { plainToInstance } from 'class-transformer'
-import { CreateUserDto, UpdateUserDTO, UserDTO } from 'src/dtos/user.dto'
+import { CreateUserDto, UpdateUserDTO, UserDTO } from '../dtos/user.dto'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { User } from 'src/types/user'
-import { TokenBlacklist } from 'src/types/token-blacklist'
-import { generateUpdateToken } from 'src/common/generate-update-token'
-import { hashPassword } from 'src/common/hashPassword'
+import { User } from '../types/user'
+import { TokenBlacklist } from '../types/token-blacklist'
+import { generateUpdateToken } from '../common/generate-update-token'
+import { hashPassword } from '../common/hashPassword'
 import * as nodemailer from 'nodemailer'
-import { otpCache, verify } from 'src/main'
-import { UserRole } from 'src/enums/role.enum'
+import { otpCache, verify } from '../main'
+import { UserRole } from '../enums/role.enum'
 
 type PayloadType = {
   id: string

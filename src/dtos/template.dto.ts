@@ -2,7 +2,7 @@ import { IsArray, IsBoolean, IsNotEmpty, IsNumber, IsOptional, Min } from 'class
 import { Expose, Transform, Type } from 'class-transformer'
 import { MetaDataDTO } from './meta-data.dto'
 import { ProductInfoDTO } from './product.dto'
-import { BooleanPipe } from 'src/pipes/boolean.pipe'
+import { BooleanPipe } from '../pipes/boolean.pipe'
 import { OptionDTO } from './option.dto'
 
 export class TemplateItemDTO {

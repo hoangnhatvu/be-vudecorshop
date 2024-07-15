@@ -1,6 +1,6 @@
 import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, Max, Min } from 'class-validator'
 import { Expose, Transform, Type } from 'class-transformer'
-import { BooleanPipe } from 'src/pipes/boolean.pipe'
+import { BooleanPipe } from '../pipes/boolean.pipe'
 import { MetaDataDTO } from './meta-data.dto'
 import { ProductInfoDTO } from './product.dto'
 

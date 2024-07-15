@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { tokenBlacklistSchema } from 'src/models/token_blacklist.shema';
+import { tokenBlacklistSchema } from '../../models/token_blacklist.shema';
 
 @Module({
   imports: [

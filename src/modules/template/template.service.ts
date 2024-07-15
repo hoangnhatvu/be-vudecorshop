@@ -1,11 +1,11 @@
 import { HttpException, HttpStatus, Injectable, BadRequestException } from '@nestjs/common'
-import { generateUpdateToken } from 'src/common/generate-update-token'
+import { generateUpdateToken } from '../../common/generate-update-token'
 import { plainToInstance } from 'class-transformer'
 import { Model } from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose'
-import { User } from 'src/types/user'
-import { Template } from 'src/types/template'
-import { CreateTemplateDTO, FilterTemplateDTO, TemplateDTO } from 'src/dtos/template.dto'
+import { User } from '../../types/user'
+import { Template } from '../../types/template'
+import { CreateTemplateDTO, FilterTemplateDTO, TemplateDTO } from '../../dtos/template.dto'
 
 export interface PaginatedTemplate {
   data: TemplateDTO[]

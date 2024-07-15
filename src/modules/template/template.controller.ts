@@ -14,16 +14,16 @@ import {
   HttpStatus,
   HttpCode,
 } from '@nestjs/common'
-import { UserRole } from 'src/enums/role.enum'
-import { AuthGuard } from 'src/guards/auth.guard'
-import { Roles } from 'src/decorators/roles.decorator'
-import { fileFilter } from 'src/common/fileFilter'
+import { UserRole } from '../../enums/role.enum'
+import { AuthGuard } from '../../guards/auth.guard'
+import { Roles } from '../../decorators/roles.decorator'
+import { fileFilter } from '../../common/fileFilter'
 import { TemplateService } from './template.service'
-import { CloudinaryService } from 'src/common/uploadImage'
+import { CloudinaryService } from '../../common/uploadImage'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { storageConfig } from 'src/common/config'
-import { CreateTemplateDTO, FilterTemplateDTO } from 'src/dtos/template.dto'
-import { deleteImage } from 'src/common/deleteImage'
+import { storageConfig } from '../../common/config'
+import { CreateTemplateDTO, FilterTemplateDTO } from '../../dtos/template.dto'
+import { deleteImage } from '../../common/deleteImage'
 
 @Controller('templates')
 export class TemplateController {

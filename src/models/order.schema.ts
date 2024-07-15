@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose'
-import { OrderStatus } from 'src/enums/order.enum'
+import { OrderStatus } from '../enums/order.enum'
 import { baseSchema } from './base.schema'
-import { PaymentMethod, PaymentStatus } from 'src/enums/payment.enum'
+import { PaymentMethod, PaymentStatus } from '../enums/payment.enum'
 
 export const orderSchema = new mongoose.Schema({
   order_code_ship: {

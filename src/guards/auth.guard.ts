@@ -10,7 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { TokenBlacklist } from 'src/types/token-blacklist';
+import { TokenBlacklist } from '../types/token-blacklist';
 
 type PayloadType = {
   id: string;

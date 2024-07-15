@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const token = '101e2d64-95a3-11ee-b1d4-92b443b7a897'
+const token = process.env.GHN_API_KEY
 
-const createOrder = async (data) => {
+const createOrder = async (data: any) => {
   try {
-    const endpoint = 'https://dev-online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/create'
+    const endpoint = process.env.GHN_URL
     const body = {
       payment_type_id: 1,
       required_note: 'CHOXEMHANGKHONGTHU',
@@ -26,7 +26,7 @@ const createOrder = async (data) => {
     const response = await axios.post(endpoint, body, {
       headers: {
         Token: token,
-        ShopId: '190512',
+        ShopId: process.env.GHN_SHOP_ID,
       },
     })
 

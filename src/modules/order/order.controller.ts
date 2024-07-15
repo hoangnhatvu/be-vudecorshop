@@ -1,9 +1,9 @@
 import { Body, Controller, Post, UseGuards, Req, BadRequestException, Put, Query, Get } from '@nestjs/common'
-import { UserRole } from 'src/enums/role.enum'
-import { AuthGuard } from 'src/guards/auth.guard'
-import { Roles } from 'src/decorators/roles.decorator'
+import { UserRole } from '../../enums/role.enum'
+import { AuthGuard } from '../../guards/auth.guard'
+import { Roles } from '../../decorators/roles.decorator'
 import { OrderService } from './order.service'
-import { CreateOrderDTO, GetOrderByUserDTO, UpdateOrderDTO } from 'src/dtos/order.dto'
+import { CreateOrderDTO, GetOrderByUserDTO, UpdateOrderDTO } from '../../dtos/order.dto'
 
 @Controller('orders')
 export class OrderController {
