@@ -7,3 +7,4 @@ upload/
 tmp/
 temp/
 dist/
+.vercel
