@@ -1,0 +1,9 @@
+.idea/
+.vscode/
+.env
+node_modules/
+build/
+upload/
+tmp/
+temp/
+dist/
