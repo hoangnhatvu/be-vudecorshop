@@ -50,9 +50,6 @@ export class ProductDTO extends MetaDataDTO {
 
   @Expose()
   deleted_at: Date
-
-  @Expose()
-  updated_token: string
 }
 
 export class ProductInfoDTO {
