@@ -18,7 +18,7 @@ import { TemplateModule } from './modules/template/template.module'
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot('mongodb+srv://hoangnhatvu35202:Vu586039@cluster0.e6rlg4q.mongodb.net/vushop'),
+    MongooseModule.forRoot(process.env.DB_CONNECTION_URL),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..'),
     }),

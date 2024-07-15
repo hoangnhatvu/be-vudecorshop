@@ -5,7 +5,7 @@ import * as fs from 'fs';
 
 export const uploadToFirebase = async (file: Express.Multer.File) => {
   const firebaseConfig = {
-    apiKey: 'AIzaSyAvQV0MwFvo4q-lSUpxk6AhpLJqvEQQxSM',
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: 'vudecorshop.firebaseapp.com',
     projectId: 'vudecorshop',
     storageBucket: 'vudecorshop.appspot.com',
