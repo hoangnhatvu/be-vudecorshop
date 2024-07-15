@@ -253,7 +253,7 @@ export class OrderService {
     vnp_Params['vnp_OrderInfo'] = 'Thanh toán cho đơn hàng'
     vnp_Params['vnp_OrderType'] = 'other'
     vnp_Params['vnp_Amount'] = amount * 100
-    vnp_Params['vnp_ReturnUrl'] = 'http://192.168.61.103:3000/orders/getPaymentResult'
+    vnp_Params['vnp_ReturnUrl'] = 'https://be-vudecorshop-production.up.railway.app/orders/getPaymentResult'
     vnp_Params['vnp_IpAddr'] = '127.0.0.1'
     vnp_Params['vnp_CreateDate'] = moment(new Date()).format('YYYYMMDDHHmmss')
 
