@@ -47,7 +47,7 @@ export class TemplateController {
     }
 
     try {
-      const result_image = file ? await this.cloudinaryService.uploadImage(file.path) : null
+      const result_image = await this.cloudinaryService.uploadImage(file)
 
       return this.templateService.create(createTemplateDTO, req.user_data.id, file ? result_image?.secure_url : null)
     } catch (error) {
